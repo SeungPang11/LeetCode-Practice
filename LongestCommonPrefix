@@ -1,0 +1,22 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        
+        """
+        Get the min length element compare to all other elements in the list
+        If doesn't match, remove the last char from minStr then compare again
+        """
+        
+        longest = ""
+        minStr = min(strs, key=len)
+        
+        for i in range(len(minStr)):
+            if all([x.startswith(minStr) for x in strs]):
+                longest = minStr
+            else:
+                minStr = minStr[:-1]
+        return longest
+            
