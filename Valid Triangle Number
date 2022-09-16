@@ -1,0 +1,24 @@
+"""
+Sum of two sides > remaining side 
+"""
+
+class Solution(object):
+    def triangleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        res = 0
+        nums.sort()
+        
+        for i in range(2,len(nums)):
+            low, high = 0, i-1
+            
+            while low < high:
+                if nums[low] + nums[high] > nums[i]:
+                    res += high-low
+                    high-=1
+                else:
+                    low+=1
+        return res
+        
