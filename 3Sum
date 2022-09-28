@@ -1,0 +1,41 @@
+class Solution(object):
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        
+        nums.sort()
+        target = 0
+        new_l = []
+
+        for i in range(len(nums)-2):
+            rest = target - nums[i]
+            l, h = i+1, len(nums) - 1
+
+            while l < h:
+                pair = nums[l] + nums[h]
+                if pair == rest:
+                    res = [nums[i], nums[l], nums[h]]
+                    if res not in new_l:
+                        new_l.append(res)
+
+                    #pass duplicates
+                    while l < h and nums[l] == nums[l+1]:
+                        l += 1
+                    while l < h and nums[h] == nums[h-1]:
+                        h -= 1
+                    l+=1
+                    h-=1
+                
+                elif pair < rest:
+                    l += 1
+                else:
+                    h -= 1
+
+        return new_l
+
+
+
+
+
