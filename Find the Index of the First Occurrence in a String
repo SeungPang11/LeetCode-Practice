@@ -1,0 +1,9 @@
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        i = []
+        nsize = len(needle)
+        
+        for j in range(len(haystack)):
+            i.append(haystack[j:j+nsize])
+                    
+        return i.index(needle) if needle in i else -1
