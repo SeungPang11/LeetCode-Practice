@@ -1,0 +1,37 @@
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        """
+             TL       
+        [a0, a1, a2]
+    BL  [b0, b1, b2] TR
+        [c0, c1, c2]
+             BR
+
+        [c0, b0, a0]
+        [c1, b1, a1]
+        [c2, b2, a2]
+        """
+        l, r = 0, len(matrix) - 1
+        
+        while l < r:
+            for i in range(r - l):
+                Top, Bottom = l, r
+                # Save Top Left
+                TopLeft = matrix[Top][l+i]
+
+                # Bottom Left -> Top Left
+                matrix[Top][l+i] = matrix[Bottom - i][l]
+
+                # Bottom Right -> Bottom Left
+                matrix[Bottom - i][l] = matrix[Bottom][r - i]
+
+                # Top Right -> Bottom Right
+                matrix[Bottom][r - i] = matrix[Top + i][r]
+
+                # Top Left -> Top Right
+                matrix[Top + i][r] = TopLeft
+            r -= 1
+            l += 1
