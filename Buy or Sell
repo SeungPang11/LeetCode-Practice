@@ -1,0 +1,22 @@
+prices = [10,5,20,32,25,12]
+dts = [
+    '2019-01-01',
+    '2019-01-02',
+    '2019-01-03',
+    '2019-01-04',
+    '2019-01-05',
+    '2019-01-06',
+]
+
+def read_date(date):
+    return datetime.strptime(date, "%Y-%m-%d")
+
+def max_profit(prices):
+    profit = 0
+    for i in range(1, len(prices)):
+        if prices[i] > prices[i-1]:
+            profit += prices[i] - prices[i-1]
+    return profit
+
+p = max_profit(prices)
+print(p)
