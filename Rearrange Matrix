@@ -1,0 +1,28 @@
+ [a1, a2],
+ [b1, b2]
+
+ [b1, a1],
+ [b2, a2]
+
+l, r = 0, len(matrix) - 1
+while l < r:
+    for i in range(r - l):
+        Top, Bottom = l, r
+        # Save Top Left
+        TopLeft = matrix[Top][l+i]
+
+        # Bottom Left -> Top Left
+        matrix[Top][l+i] = matrix[Bottom - i][l]
+
+        # Bottom Right -> Bottom Left
+        matrix[Bottom - i][l] = matrix[Bottom][r - i]
+
+        # Top Right -> Bottom Right
+        matrix[Bottom][r - i] = matrix[Top + i][r]
+
+        # Top Left -> Top Right
+        matrix[Top + i][r] = TopLeft
+    r -= 1
+    l += 1
+
+print(matrix)
