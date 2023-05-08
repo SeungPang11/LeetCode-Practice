@@ -1,0 +1,22 @@
+haystack="imsadbutsad"
+needle="sad"
+
+i = [-1]
+# check = True
+
+for ind in range(len(haystack)):
+    if haystack[ind]==needle[0]:
+        i.append(ind)
+        c = ind+1
+
+        for j in range(1, len(needle)):
+            if haystack[c] != needle[j]:
+                i.pop()
+            c += 1
+            # if check==False:
+            #     i.pop()
+            #     check=True
+if len(i)==1:
+    print(i[0])
+else:
+    print(i[1])
