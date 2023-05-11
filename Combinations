@@ -15,3 +15,20 @@ class Solution:
         backtrack(1, [])
 
         return res
+
+
+n = [1,2,3,4]
+k = 2
+res = []
+
+def backtrack(start,comb):
+    if len(comb) == k:
+        res.append(comb.copy())
+        return
+    for i in range(start, len(n)):
+        comb.append(n[i])
+        backtrack(i+1,comb)
+        comb.pop()
+
+backtrack(0, [])
+print(res)
