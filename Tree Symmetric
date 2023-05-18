@@ -1,0 +1,36 @@
+#Construct Tree
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+
+#Add node
+root = Node(1)
+root.left = Node(2)
+root.right = Node(2)
+root.left.left = Node(3)
+root.left.right = Node(4)
+root.right.left = Node(4)
+root.right.right = Node(3)
+
+#Add node
+root1 = Node(None)
+root1.left = Node(2)
+root1.right = Node(2)
+root1.left.left = Node(None)
+root1.left.right = Node(4)
+root1.right.left = Node(4)
+root1.right.right = Node(3)
+
+# def symmetric(root):
+
+def check_mirror(t1, t2):
+    if t1 == None and t2 == None:
+        return True
+    if t1 == None or t2 == None:
+        return False
+    return t1.key == t2.key and check_mirror(t1.left, t2.right) and check_mirror(t1.right, t2.left)
+
+check = check_mirror(root1, root1)
+print(check)
