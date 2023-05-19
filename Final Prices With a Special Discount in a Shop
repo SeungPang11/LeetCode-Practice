@@ -1,0 +1,36 @@
+#Final Prices With a Special Discount in a Shop
+#Brute Force
+prices = [8,4,6,2,3]
+#output = [4,2,4,2,3]
+out = []
+max = len(prices)-1
+
+for i in range(0, len(prices)-1):
+    j = i+1
+    #Find next element smaller than curr element
+    out.append(prices[i])
+    while j <= max:
+        if prices[j] < prices[i]:
+            out[-1] = prices[i]-prices[j]
+            break
+        j += 1
+#Add last element
+out.append(prices[-1])
+print(out)
+
+#Optimization using stack
+#Each iteration, insert indices in stack 
+#Compare with curr element 
+#If stack top (prev) >= curr element 
+#Then subtract curr from prev, stack pop
+
+stack = []
+for i, a in enumerate(prices):
+    # while stack not empty AND stack top
+    # greater than curr element
+    while stack and prices[stack[-1]] >= a:
+        prices[stack.pop()] -= a
+    #store index of the array
+    stack.append(i)
+
+print(prices)
