@@ -1,0 +1,38 @@
+# balanced parentheses in an expression
+open = ["[", "{", "("]
+close = ["]", "}", ")"]
+
+
+# Function to check valid parentheses
+# If open bracket, push to stack
+# If close bracket, get index of close
+# Then, if close index == open index, pop top of stack
+# At the end, if stack empty -> valid
+def check(myStr):
+    stack = []
+
+    # Edge case - If string len odd, then invalid
+    if len(myStr) % 2 == 1:
+        return "Invalid"
+
+    for i in myStr:
+        if i in open:
+            stack.append(i)
+        elif i in close:
+            ind = close.index(i)
+            if (stack[-1] == open[ind]) and stack:
+                stack.pop()
+            else:
+                return "Invalid"
+
+    return "Valid" if not stack else "Invalid"
+
+# Driver code
+string = "{[]{()}}"
+print(string, "-", check(string))
+
+string = "[{}{})(]"
+print(string, "-", check(string))
+
+string = "{][}"
+print(string, "-", check(string))
