@@ -1,0 +1,19 @@
+roots = ["cat", "bat", "rat"]
+sentence = "the cattle was rattled by the battery"
+words = sentence.split()
+
+j=0
+#length of total words - 7
+while j < len(words):
+    i=0
+    # length of each word
+    while i < len(words[j]):
+        #Increment i while each word stem in root
+        if words[j][:i] in roots:
+            words[j] = words[j][:i]
+            i=len(words[j])
+        i+=1
+    j+=1
+
+new_s = " ".join(words)
+print(new_s)
