@@ -1,0 +1,21 @@
+from datetime import datetime
+from datetime import date
+import math
+import os
+import random
+import re
+import sys
+
+input = ['Sun 10 May 2015 13:54:36 -0700', 'Sun 10 May 2015 13:54:36 -0000',
+         'Sat 02 May 2015 19:54:36 +0530', 'Fri 01 May 2015 13:54:36 -0000']
+
+def time_delta(t1, t2):
+    t1 = datetime.strptime(t1, "%a %d %b %Y %H:%M:%S %z")
+    t2 = datetime.strptime(t2, "%a %d %b %Y %H:%M:%S %z")
+    return str(int(abs(t2-t1).total_seconds()))
+
+
+n=2
+for i in range(0, n+1, 2):
+    delta = time_delta(input[i], input[i+1])
+    print(delta)
