@@ -1,0 +1,20 @@
+#permutations total 6
+
+num = [1,2,3]
+def permutation(num):
+    if len(num) <= 1:
+        return [num.copy()]
+
+    res = []
+    for i in range(len(num)):
+        m = num.pop(0)
+        # rest = num[:i]+num[i+1:]
+        perm = permutation(num)
+        for p in perm:
+            p.append(m)
+        res.extend(perm) #for appending "list"
+        num.append(m)    #for adding an "element"
+    return res
+
+r = permutation(num)
+print(r)
