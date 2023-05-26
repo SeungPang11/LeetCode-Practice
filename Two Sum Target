@@ -1,0 +1,19 @@
+#Given a list of integers, 
+#Print two indices of numbers that add up to target number
+
+num = [2, 4, 5, 1, 7]
+num1 = [0, 4, 5, 1, 7]
+num2 = [0, 0, 5, 1, 7]
+target = 9 #(2,7), (4,5)
+
+
+def target_num(n, target):
+    map = []
+    for i, e in enumerate(n):
+        difference = target - e
+        if difference in map:
+            print([i, map.index(difference)])
+        else:
+            map.append(e)
+
+target_num(num, target)
