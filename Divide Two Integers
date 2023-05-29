@@ -1,0 +1,26 @@
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        #base cases
+        if divisor == 0: return 0
+        if divisor == 1: return dividend  
+        if divisor == dividend: return 1
+            
+        out, sign = 0, 1
+        
+        #check negative
+        if (dividend >= 0 and divisor < 0) or (dividend < 0 and divisor >= 0): 
+            sign = -1
+            
+        #get absolute
+        divisor, dividend = abs(divisor), abs(dividend)
+        
+        
+        while dividend >= divisor:
+            shift = 0
+            while dividend >= (divisor << shift):
+                shift += 1
+            out += 1 << (shift - 1)
+            dividend -= divisor << (shift - 1)
+        
+        out = -out if sign == -1 else out
+        return min(max(-2147483648, out), 2147483647)
