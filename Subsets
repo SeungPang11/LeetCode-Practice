@@ -1,0 +1,15 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        def backtrack(start, comb):
+            #if search exists, append to result
+            if comb not in res:
+                res.append(comb.copy())
+
+            #backtrack
+            for i in range(start, len(nums)):
+                comb.append(nums[i])
+                backtrack(i+1,comb)
+                comb.pop()
+        backtrack(0, [])
+        return res  
