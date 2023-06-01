@@ -1,0 +1,25 @@
+#permutations duplicate
+num=[1,1,2]
+res, perm = [], []
+count = {n:0 for n in num}
+
+for i in num:
+    count[i] += 1
+
+def permutation2():
+    if len(perm) == len(num):
+        res.append(perm.copy())
+        return
+
+    for i in count:
+        if count[i] > 0:
+            perm.append(i)
+            count[i] -= 1
+
+            permutation2()
+
+            count[i] += 1
+            perm.pop()
+
+permutation2()
+print(res)
