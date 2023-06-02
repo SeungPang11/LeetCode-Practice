@@ -1,0 +1,26 @@
+digits = [1,2,3]
+digits1 = [1,9,9]
+carry = 0
+n = len(digits)
+for i in reversed(range(n)):
+    #plus one for last digit
+    if n==1:
+        val = digits[i] + 1
+    else:
+        val = digits[i]+1 if i==n-1 else digits[i]+carry
+
+    if digits[i] == 9:
+        carry = val//10
+        val -= 10
+        digits[i] = val
+
+    else:
+        carry = 0
+        digits[i] = val
+
+    # if the first element has carry,
+    # insert 1 to the array
+    if i == 0 and carry:
+        digits.insert(0, 1)
+
+print(digits)
