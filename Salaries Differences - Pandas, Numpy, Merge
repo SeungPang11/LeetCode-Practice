@@ -1,0 +1,18 @@
+# Import your libraries
+import pandas as pd
+import numpy as np
+
+# Start writing code
+db_employee.head()
+
+merge_df = pd.merge(db_employee[['salary', 'department_id']], db_dept[['id', 'department']], 
+how='left', left_on=['department_id'], right_on=['id'])
+
+marketing = merge_df.where(merge_df['department']=='marketing')
+max_market = marketing['salary'].max()
+
+engineering = merge_df.where(merge_df['department']=='engineering')
+max_engineering = engineering['salary'].max()
+
+data = np.array([abs(max_market-max_engineering)])
+result = pd.DataFrame(data, columns=['salary_difference'])
