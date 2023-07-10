@@ -1,0 +1,10 @@
+#Robbing House - Dynamic Programming
+nums = [1,2,-3,1] #output = 4
+
+arr = []
+arr.append(nums[0])
+for i in range(1, len(nums)):
+    arr.append(max(arr[i-1],
+        nums[i]+(arr[i-2] if i > 1 else 0)))
+
+print(arr[-1])
