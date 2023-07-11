@@ -1,0 +1,13 @@
+#Min Cost to Climb Stairs
+#One or two steps at a time
+cost = [10,15,20] #output 6
+dp = []
+dp.append(cost[0])
+
+if len(cost) >= 1:
+    dp.append(cost[1])
+
+for i in range(2, len(cost)):
+    dp.append(cost[i] + min(dp[i-1], dp[i-2]))
+
+print(min(dp[-1], dp[-2]))
