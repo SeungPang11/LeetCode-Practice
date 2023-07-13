@@ -1,0 +1,14 @@
+class Solution:
+    def numSquares(self, n: int) -> int:
+        #base cases
+        if n==0: 
+            return 0
+        if n<0: 
+            return float("inf")
+
+        count=n
+        i=1
+        while i*i<=n:
+            count=min(count, numSquares(n-(i*i)))
+            i+=1
+        return count+1
