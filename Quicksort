@@ -1,0 +1,19 @@
+num = [7,2,1,8,5,4]
+def partition(A,start,end):
+    pivot=A[end]
+    ind=start
+    for i in range(start,end):
+        if A[i] <= pivot:
+            A[ind], A[i] = A[i], A[ind]
+            ind+=1
+    A[ind],A[end] = pivot, A[ind]
+    return ind
+
+def quicksort(A, start, end):
+    if start < end:
+        ind = partition(A, start,end)
+        quicksort(A, start, ind-1)
+        quicksort(A, ind+1, end)
+
+quicksort(num,0,len(num)-1)
+print(num)
