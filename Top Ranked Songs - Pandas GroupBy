@@ -1,0 +1,9 @@
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+spotify_worldwide_daily_song_ranking.head()
+
+top_song = spotify_worldwide_daily_song_ranking.where(spotify_worldwide_daily_song_ranking["position"] == 1)
+
+result = top_song.groupby(['trackname']).size().to_frame('times_top1').reset_index().sort_values('times_top1', ascending = False)
