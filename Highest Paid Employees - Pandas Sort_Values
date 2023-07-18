@@ -1,0 +1,8 @@
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+sf_public_salaries.head()
+
+highest = sf_public_salaries.sort_values(by=['totalpay'], ascending=False)
+highest[["jobtitle", "totalpay"]].head(2)
