@@ -1,0 +1,9 @@
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+salesforce_employees.head()
+
+target = salesforce_employees.where(salesforce_employees['manager_id'] == 13)[['first_name', 'target']].sort_values(by=['target'], ascending=False)
+
+res = target[target['target'] == target['target'].max()]
