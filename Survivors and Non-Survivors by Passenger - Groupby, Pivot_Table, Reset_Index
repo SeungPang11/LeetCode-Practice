@@ -1,0 +1,14 @@
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+titanic.head()
+
+grouped = titanic.groupby(["pclass","survived"]).size().to_frame('count').reset_index()
+
+pivot = grouped.pivot_table(index=['survived'],columns='pclass',values = 'count',aggfunc='sum')
+
+pivot.columns.name = None
+pivot.columns= pivot.columns.astype(str)
+pivot = pivot.reset_index()
+result = pivot.rename(columns = {'1':'first_class','2':'second_classs','3':'third_class'})
