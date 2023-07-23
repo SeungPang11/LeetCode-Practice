@@ -1,0 +1,11 @@
+#Bubble Sort
+num = [4,1,2,7,5,3]
+num1 = [34,11,2,71,15,3]
+def bubble(num):
+    for i in range(len(num)-1):
+        for j in range(len(num)-i-1):
+            if num[j] > num[j+1]:
+                num[j], num[j+1] = num[j+1], num[j]
+
+bubble(num1)
+print(num1)
