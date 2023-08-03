@@ -1,0 +1,8 @@
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+employee.head()
+
+result = employee[employee.groupby('department')['salary'].transform('max') == 
+employee['salary']][['department','first_name','salary']]
