@@ -1,0 +1,6 @@
+# Import your libraries
+import pandas as pd
+
+draft = google_file_store[google_file_store['filename'].str.contains('draft')]
+
+result = draft.contents.str.split('\W+', expand=True).stack().value_counts().reset_index()
