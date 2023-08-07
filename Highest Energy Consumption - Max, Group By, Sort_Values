@@ -1,0 +1,9 @@
+# Import your libraries
+import pandas as pd
+
+
+df = pd.concat([fb_eu_energy, fb_asia_energy, fb_na_energy], ignore_index=True, axis=0)
+
+result = df.groupby(['date'])['consumption'].sum().reset_index().sort_values('consumption', ascending = False)
+
+max_energy = result[result['consumption'] == result['consumption'].max()][['date','consumption']]
