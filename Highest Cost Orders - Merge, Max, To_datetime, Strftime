@@ -1,0 +1,15 @@
+# Import your libraries
+import pandas as pd
+
+merge = pd.merge(customers, orders, left_on="id", right_on="cust_id")
+merge["order_date"] = merge["order_date"].apply(pd.to_datetime)
+order_date = merge[merge["order_date"].between("2019-02-01", "2019-05-01")]
+
+result = order_date.groupby(["order_date", "first_name"])["total_order_cost"].sum().to_frame("max_cost").reset_index()
+
+result = result[result.max_cost == result.max_cost.max()]
+
+result["order_date"] = pd.to_datetime(
+    result["order_date"], format="%Y-%m-%d"
+).dt.strftime("%Y-%m-%d")
+result
