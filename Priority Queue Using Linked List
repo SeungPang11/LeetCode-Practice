@@ -1,0 +1,65 @@
+# Priority Queue using Linked List
+class Node:
+    def __init__(self, val, priority):
+        self.val = val
+        self.priority = priority
+        self.next = None
+
+class PriorityQueue:
+    def __init__(self):
+        self.front = None
+
+    def isEmpty(self):
+        return True if self.front == None else False
+
+    def enqueue(self, val, priority):
+        if self.isEmpty() == True:
+            self.front = Node(val, priority)
+
+        # Queue NOT empty
+        else:
+            # New node priority HIGHER than front
+            if self.front.priority < priority:
+                new = Node(val, priority)
+                new.next = self.front
+                self.front = new
+
+            # New node priority LESS than front -> traverse
+            else:
+                temp = self.front
+                while temp.next:
+                    if temp.next.priority <= priority:
+                        break
+                    temp = temp.next
+
+                new = Node(val, priority)
+                new.next = temp.next
+                temp.next = new
+
+    def dequeue(self):
+        if self.isEmpty():
+            print("Queue Empty")
+
+        else:
+            self.front = self.front.next
+
+    def display(self):
+        temp = self.front
+        while temp:
+            print(temp.val)
+            temp = temp.next
+
+
+if __name__ == "__main__":
+    # Order 6 -> 7 -> 4 -> 5
+    pq = PriorityQueue()
+    pq.enqueue(5, 1)
+    pq.enqueue(6, 5)
+    pq.enqueue(4, 3)
+    pq.enqueue(7, 4)
+    pq.display()
+
+    print("After dequeue")
+    pq.dequeue()
+    pq.dequeue()
+    pq.display()
