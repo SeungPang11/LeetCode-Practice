@@ -1,0 +1,62 @@
+# Check if Binary Tree is Heap 
+
+class GFG:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+    def countNode(self, root):
+        if root == None:
+            return 0
+        return (1 + self.countNode(root.left) +  self.countNode(root.right))
+
+    def isComplete(self, root, index, num_node):
+        if root == None:
+            return True
+
+        if index >= num_node:
+            return False
+
+        return (self.isComplete(root.left, (2*index)+1, num_node) and
+                self.isComplete(root.right, (2*index)+2, num_node))
+
+    def heapUtil(self, root):
+        # 0 child - True
+        if root.left == None and root.right == None:
+            return True
+
+        # 1 child (left child) - check if root GREATER than left child
+        if root.right == None:
+            return root.val >= root.left.val
+
+        # 2 children (left, right) - check if root GREATER than both
+        else:
+            if (root.val >= root.left.val and
+                root.val >= root.right.val):
+
+                return (self.heapUtil(root.left) and
+                        self.heapUtil(root.right))
+            else:
+                return False
+
+    def isHeap(self, root):
+        node_count = self.countNode(root)
+
+        return (self.isComplete(root, 0, node_count) and
+                self.heapUtil(root))
+
+
+if __name__ == '__main__':
+    root = GFG(5)
+    root.left = GFG(2)
+    root.right = GFG(3)
+    root.left.left = GFG(1)
+    root.left.right = GFG(5)
+    root.right.right = GFG(6)
+
+
+    if root.isHeap(root):
+        print("Binary Tree is Max Heap")
+    else:
+        print("Binary Tree is NOT Max Heap")
