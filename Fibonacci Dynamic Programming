@@ -1,0 +1,14 @@
+# 
+def fibonacci(num):
+    bottom_up = [0] * num
+    bottom_up[0] = 1
+    bottom_up[1] = 1
+
+    for i in range(2, len(bottom_up)):
+        bottom_up[i] = bottom_up[i-1] + bottom_up[i-2]
+
+    return bottom_up[-1]
+
+num = 7
+res = fibonacci(num)
+print(res)
