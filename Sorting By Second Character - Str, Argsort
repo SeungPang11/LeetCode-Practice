@@ -1,0 +1,5 @@
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+random_id.loc[random_id.id.str[1:].argsort()]
