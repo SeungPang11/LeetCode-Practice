@@ -1,0 +1,23 @@
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        # if k < 0 or k > 10**5:
+        #     print("Error - k")
+
+        # if len(nums) < 1:
+        #     print("Error - nums")
+
+        # ind = (k % len(nums))
+        # temp1, temp2 = nums[:-ind], nums[-ind:]
+        # nums = temp2 + temp1
+
+        if k >= len(nums):
+            k = k%len(nums)
+        
+        if len(nums)==1 or k == 0:
+            return nums
+        
+        nums[:k], nums[k:] = nums[-k:], nums[:-k]
+        return nums
