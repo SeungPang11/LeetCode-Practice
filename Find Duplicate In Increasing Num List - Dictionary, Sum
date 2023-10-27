@@ -1,0 +1,27 @@
+# From a list n ranging 1 increment - k, k+1, k+2,..n, find duplicate
+# Constant time
+
+num = [1,2,3,3,4,5]
+
+# Solution 1
+# (Sum of number from k to n) - sum of list = duplicate num
+
+l = len(num)-1
+s = ((num[0]+num[l])//2)*l
+print(sum(num)-s)
+
+# Solution 2
+# Use dictionary to keep count, if value > 1 then return key
+
+from collections import defaultdict
+def find_duplicate(n):
+    d = defaultdict(int)
+    for i in n:
+        d[i] += 1
+
+    for key, val in d.items():
+        if val > 1:
+            return key
+
+ans = find_duplicate(num)
+print(ans)
