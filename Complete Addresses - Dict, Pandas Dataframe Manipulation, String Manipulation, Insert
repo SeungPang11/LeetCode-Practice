@@ -1,0 +1,19 @@
+def complete_address(df_addresses: pd.DataFrame, df_cities: pd.DataFrame):
+    output = {"address": []}
+
+    for i in range(len(df_addresses["address"])):
+        j = 0
+
+        while j < len(df_cities["city"]):
+            add = df_addresses["address"][i].split(", ")
+
+            if df_cities["city"][j] in add:
+                state = df_cities["state"][j]
+                add.insert(-1, state)
+                add = ", ".join(add)
+                output["address"].append(add)
+            j+=1
+
+    df = pd.DataFrame(output)
+    
+    return df
