@@ -1,0 +1,7 @@
+def grades_colors(students_df: pd.DataFrame):
+    output = students_df[(students_df["favorite_color"] == "red") | 
+    (students_df["favorite_color"] == "green")]
+
+    output = output[output["grade"] > 90]
+
+    return output
