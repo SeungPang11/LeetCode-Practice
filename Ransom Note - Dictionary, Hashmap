@@ -1,0 +1,13 @@
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        map = defaultdict(int)
+
+        for i in magazine:
+            map[i] += 1
+
+        for c in ransomNote:
+            if c in map and map[c] > 0:
+                map[c] -= 1
+            else:
+                return False
+        return True
