@@ -1,0 +1,10 @@
+year20 = car_launches[car_launches['year'] == 2020]
+launch20 = year20.groupby(["company_name"])["product_name"].count().to_frame("num_products20").reset_index()
+
+year19 = car_launches[car_launches['year'] == 2019]
+launch19 = year19.groupby(["company_name"])["product_name"].count().to_frame("num_products19").reset_index()
+
+merged_df = pd.merge(launch20, launch19, how="inner", on="company_name")
+merged_df["difference"] = merged_df["num_products20"] - merged_df["num_products19"] 
+
+merged_df = merged_df[["company_name", "difference"]]
