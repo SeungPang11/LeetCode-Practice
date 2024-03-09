@@ -1,0 +1,32 @@
+s = ["aya", "ye", "woo", "ma"]
+babbling=["ayaye", "uuuma", "ye", "yemawoo", "ayaa"]
+
+res=[]
+sum_of_c= sum(len(w) for w in s)
+
+def permutations():
+    res=[]
+    curr=[]
+    def backtracking():
+        if len(curr) <= sum_of_c:
+            res.append(curr.copy())
+
+        for i in s:
+            if i not in curr:
+                curr.append(i)
+                backtracking()
+                curr.pop()
+    backtracking()
+    return res
+
+result=permutations()
+
+final_res=[]
+for i in result:
+    final_res.append(''.join(a for a in i))
+
+answer=0
+for i in babbling:
+    if i in final_res:
+        answer+=1
+print(answer)
