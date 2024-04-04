@@ -1,0 +1,23 @@
+def solution(n):
+    max_gap = 0
+    zeros = 0
+    bin_n = "{0:b}".format(n)
+
+    #divisible by 10 then 0
+    if int(bin_n) % 10 == 0:
+        return max_gap
+
+    for i in map(int, bin_n):
+        if i == 0:
+            zeros+=1
+        else:
+            zeros=0
+        max_gap = max(max_gap, zeros)
+
+    return max_gap
+
+integer1 = 1041
+integer2 = 32
+res = solution(integer1)
+print(res)
+
