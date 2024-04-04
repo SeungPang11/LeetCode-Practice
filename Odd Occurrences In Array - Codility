@@ -1,0 +1,13 @@
+from collections import defaultdict
+
+def solution(A):
+    # Implement your solution here
+    map=defaultdict(int)
+
+    for i in A:
+        map[i] += 1
+
+    for key, val in map.items():
+        if val % 2 != 0:
+            return key
+    return 0
