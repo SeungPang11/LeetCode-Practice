@@ -1,3 +1,21 @@
+# Modified - 100% correct
+def solution(N):
+    # Implement your solution here
+    bin_n = "{0:b}".format(N)
+    max_gap = 0
+    zeros = 0
+
+    for i in map(int, bin_n):
+        if i == 1:
+            max_gap = max(max_gap, zeros)
+            zeros = 0
+        else:
+            zeros += 1
+
+    return max_gap
+
+
+# First attempt - 60% correct
 def solution(n):
     max_gap = 0
     zeros = 0
