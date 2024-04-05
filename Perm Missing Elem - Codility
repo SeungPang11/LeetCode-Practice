@@ -1,0 +1,7 @@
+def solution(A):
+    # Implement your solution here
+    arr_len = len(A)+1
+    sum_arr = (arr_len * (arr_len + 1))//2
+    res = sum_arr - sum(A)
+    
+    return res
