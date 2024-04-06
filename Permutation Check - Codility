@@ -1,0 +1,10 @@
+def solution(A):
+    # Implement your solution here
+    if len(A) != max(A):
+        return 0
+    
+    s=set()
+    for i in A:
+        s.add(i)
+    
+    return 1 if max(A) == len(s) else 0
