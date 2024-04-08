@@ -1,0 +1,31 @@
+# Smallest positive integer (> 0)
+# that does not occur in A
+A = [1, 3, 6, 4, 1, 2]   # A=[1,2,3,4,6]
+
+Test1 = [1]        #2
+Test2 = [-2,-1,1]  #2
+Test3 = [-1,-3]    #1
+
+def solution(A):
+    # Sorted positive num in list
+    positive_set = set()
+    for i in A:
+        if i > 0:
+            positive_set.add(i)
+    positive_arr = list(positive_set)
+
+    # Smallest possible positive num is 1
+    # Iterate through positive array
+    # If missing num >= curr then increment missing num by 1
+    # If missing num < curr then break and return missing num
+    missing = 1
+    for i in positive_arr:
+        if missing < i:
+            break
+        else:
+            missing += 1
+
+    return missing
+
+res=solution(Test3)
+print(res)
