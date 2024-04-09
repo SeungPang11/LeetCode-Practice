@@ -1,0 +1,13 @@
+def solution(A):
+    Sum = 0
+    basket = [0]*2 # basket[0] : 0의 갯수, basket[1] : 1의 갯수(0과 0사이)
+    for i in A:
+        if i == 0 :
+            basket[0] +=1
+            basket[1] = 0
+        elif i == 1 :
+            basket[1] =1
+            Sum += basket[0] * basket[1]
+    if Sum > 1000000000:
+        Sum = -1
+    return Sum
